@@ -42,10 +42,10 @@ RUN --mount=type=cache,target=/var/cache/apt \
     chmod +x uv-x86_64-unknown-linux-gnu/* && \
     mv uv-x86_64-unknown-linux-gnu/* /usr/local/bin
 
-RUN mkdir -p $HOME/.bashrc.d/ $HOME/.config/git && \
-    echo "for f in ~/.bashrc.d/*; do source $f; done" >> $HOME/.bashrc
+RUN mkdir -p /root/.bashrc.d/ /root/.config/git && \
+    echo "for f in ~/.bashrc.d/*; do source $f; done" >> /root/.bashrc
 
-COPY bashrc.d/* $HOME/.bashrc.d/
-COPY config/git/* $HOME/.config/git/
-COPY config/ripgrep/* $HOME/.config/
-COPY config/starship/* $HOME/.config/
+COPY bashrc.d/* /root/.bashrc.d/
+COPY config/git/* /root/.config/git/
+COPY config/ripgrep/* /root/.config/
+COPY config/starship/* /root/.config/
