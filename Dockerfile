@@ -43,7 +43,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     mv uv-x86_64-unknown-linux-gnu/* /usr/local/bin
 
 RUN mkdir -p /root/.bashrc.d/ /root/.config/git && \
-    echo "for f in ~/.bashrc.d/*; do source $f; done" >> /root/.bashrc
+    echo 'for f in ~/.bashrc.d/*; do source $f; done' >> /root/.bashrc
 
 COPY bashrc.d/* /root/.bashrc.d/
 COPY config/git/* /root/.config/git/
