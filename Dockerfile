@@ -5,6 +5,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     git \
+    build-essential \
     curl \
     jq \
     ripgrep \
