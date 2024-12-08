@@ -67,3 +67,5 @@ COPY config/git/config /etc/gitconfig
 COPY config/git/ignore /home/devuser/.config/git/
 COPY config/ripgrep/* /home/devuser/.config/
 COPY config/starship/* /home/devuser/.config/
+
+WORKDIR /home/devuser/workspace
