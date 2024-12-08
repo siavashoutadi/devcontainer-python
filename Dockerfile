@@ -48,6 +48,7 @@ RUN mkdir -p /root/.bashrc.d/ /root/.config/git && \
     echo '[ -f ./.env/devcontainer ] && source ./.env/devcontainer' >> /root/.bashrc
 
 COPY bashrc.d/* /root/.bashrc.d/
-COPY config/git/* /root/.config/git/
+COPY config/git/config /etc/gitconfig
+COPY config/git/ignore /root/.config/git/
 COPY config/ripgrep/* /root/.config/
 COPY config/starship/* /root/.config/
