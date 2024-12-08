@@ -10,6 +10,9 @@ RUN --mount=type=cache,target=/var/cache/apt \
     jq \
     ripgrep \
     tree \
+    less \
+    coreutils \
+    vim \
     wget && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
