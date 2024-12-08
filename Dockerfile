@@ -60,7 +60,8 @@ USER devuser
 
 RUN mkdir -p /home/devuser/.bashrc.d/ /home/devuser/.config/git && \
     echo 'for f in ~/.bashrc.d/*; do source $f; done' >> /home/devuser/.bashrc && \
-    echo '[ -f ./.env/devcontainer ] && source ./.env/devcontainer' >> /home/devuser/.bashrc
+    echo '[ -f ./.env/devcontainer ] && source ./.env/devcontainer' >> /home/devuser/.bashrc && \
+    echo 'PATH=$PATH:~/.local/bin' >> /home/devuser/.bashrc
 
 COPY bashrc.d/* /home/devuser/.bashrc.d/
 COPY config/git/config /etc/gitconfig
