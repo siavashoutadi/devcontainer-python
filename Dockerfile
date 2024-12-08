@@ -1,5 +1,12 @@
 FROM python:3.13.1-slim-bullseye
 
+ARG USERNAME=devuser
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+RUN groupadd --gid $USER_GID $USERNAME && \
+    useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+
 RUN --mount=type=cache,target=/var/cache/apt \
     --mount=type=cache,target=/var/lib/apt/lists \
     apt-get update && apt-get install -y --no-install-recommends \
@@ -49,12 +56,14 @@ RUN --mount=type=cache,target=/var/cache/apt \
     chmod +x tailwindcss-linux-x64 && \
     mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
 
-RUN mkdir -p /root/.bashrc.d/ /root/.config/git && \
-    echo 'for f in ~/.bashrc.d/*; do source $f; done' >> /root/.bashrc && \
-    echo '[ -f ./.env/devcontainer ] && source ./.env/devcontainer' >> /root/.bashrc
+USER devuser
 
-COPY bashrc.d/* /root/.bashrc.d/
+RUN mkdir -p /home/devuser/.bashrc.d/ /home/devuser/.config/git && \
+    echo 'for f in ~/.bashrc.d/*; do source $f; done' >> /home/devuser/.bashrc && \
+    echo '[ -f ./.env/devcontainer ] && source ./.env/devcontainer' >> /home/devuser/.bashrc
+
+COPY bashrc.d/* /home/devuser/.bashrc.d/
 COPY config/git/config /etc/gitconfig
-COPY config/git/ignore /root/.config/git/
-COPY config/ripgrep/* /root/.config/
-COPY config/starship/* /root/.config/
+COPY config/git/ignore /home/devuser/.config/git/
+COPY config/ripgrep/* /home/devuser/.config/
+COPY config/starship/* /home/devuser/.config/
