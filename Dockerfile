@@ -16,6 +16,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     curl \
     jq \
     ripgrep \
+    fd-find \
     tree \
     less \
     coreutils \
