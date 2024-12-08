@@ -44,7 +44,10 @@ RUN --mount=type=cache,target=/var/cache/apt \
     cd /tmp && wget https://github.com/astral-sh/uv/releases/download/0.5.6/uv-x86_64-unknown-linux-gnu.tar.gz && \
     tar -xvzf uv-x86_64-unknown-linux-gnu.tar.gz && \
     chmod +x uv-x86_64-unknown-linux-gnu/* && \
-    mv uv-x86_64-unknown-linux-gnu/* /usr/local/bin
+    mv uv-x86_64-unknown-linux-gnu/* /usr/local/bin && \
+    curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.16/tailwindcss-linux-x64 && \
+    chmod +x tailwindcss-linux-x64 && \
+    mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
 
 RUN mkdir -p /root/.bashrc.d/ /root/.config/git && \
     echo 'for f in ~/.bashrc.d/*; do source $f; done' >> /root/.bashrc && \
