@@ -19,6 +19,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     tree \
     less \
     coreutils \
+    bash-completion \
     vim \
     wget && \
     rm -rf /var/lib/apt/lists/* && \
