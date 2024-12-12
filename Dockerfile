@@ -14,6 +14,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     git \
     build-essential \
     curl \
+    gettext \
     jq \
     ripgrep \
     fd-find \
