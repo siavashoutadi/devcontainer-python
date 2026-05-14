@@ -1,4 +1,4 @@
-FROM python:3.13.1-slim-bullseye
+FROM python:3.14.5-slim-trixie
 
 ARG USERNAME=devuser
 ARG USER_UID=1000
@@ -26,10 +26,10 @@ RUN --mount=type=cache,target=/var/cache/apt \
     wget && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
-    wget https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb && \
-    dpkg -i git-delta_0.18.2_amd64.deb && \
-    rm -rf git-delta_0.18.2_amd64.deb && \
-    wget https://github.com/alexellis/arkade/releases/download/0.11.31/arkade -O /usr/local/bin/arkade && \
+    wget https://github.com/dandavison/delta/releases/download/0.19.2/git-delta_0.19.2_amd64.deb && \
+    dpkg -i git-delta_0.19.2_amd64.deb && \
+    rm -rf git-delta_0.19.2_amd64.deb && \
+    wget https://github.com/alexellis/arkade/releases/download/0.11.96/arkade -O /usr/local/bin/arkade && \
     chmod +x /usr/local/bin/arkade && \
     arkade get \
     yq \
@@ -42,20 +42,20 @@ RUN --mount=type=cache,target=/var/cache/apt \
     mv linux-amd64-1.1.0/ccat /usr/local/bin && \
     chmod +x /usr/local/bin/ccat && \
     rm -rf /tmp/linux-amd64-1.1.0 &&\
-    cd /tmp && wget https://github.com/lsd-rs/lsd/releases/download/v1.1.5/lsd-v1.1.5-x86_64-unknown-linux-gnu.tar.gz && \
-    tar -xvzf lsd-v1.1.5-x86_64-unknown-linux-gnu.tar.gz && \
-    mv lsd-v1.1.5-x86_64-unknown-linux-gnu/lsd /usr/local/bin && \
+    cd /tmp && wget https://github.com/lsd-rs/lsd/releases/download/v1.2.0/lsd-v1.2.0-x86_64-unknown-linux-gnu.tar.gz && \
+    tar -xvzf lsd-v1.2.0-x86_64-unknown-linux-gnu.tar.gz && \
+    mv lsd-v1.2.0-x86_64-unknown-linux-gnu/lsd /usr/local/bin && \
     chmod +x /usr/local/bin/lsd && \
-    rm -rf lsd-v1.1.5-x86_64-unknown-linux-gnu && \
-    cd /tmp && wget https://github.com/starship/starship/releases/download/v1.21.1/starship-x86_64-unknown-linux-gnu.tar.gz && \
+    rm -rf lsd-v1.2.0-x86_64-unknown-linux-gnu && \
+    cd /tmp && wget https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-gnu.tar.gz && \
     tar -xvzf starship-x86_64-unknown-linux-gnu.tar.gz && \
     mv starship /usr/local/bin && \
     chmod +x /usr/local/bin/starship && \
-    cd /tmp && wget https://github.com/astral-sh/uv/releases/download/0.5.6/uv-x86_64-unknown-linux-gnu.tar.gz && \
+    cd /tmp && wget https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-gnu.tar.gz && \
     tar -xvzf uv-x86_64-unknown-linux-gnu.tar.gz && \
     chmod +x uv-x86_64-unknown-linux-gnu/* && \
     mv uv-x86_64-unknown-linux-gnu/* /usr/local/bin && \
-    curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.16/tailwindcss-linux-x64 && \
+    curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v4.3.0/tailwindcss-linux-x64 && \
     chmod +x tailwindcss-linux-x64 && \
     mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
 
